@@ -9,5 +9,5 @@ const celebSchema = new mongoose.Schema({
     catchPhrase: String
 })
 
-const Celeb = mongoose.model("Celeb", celebSchema)
+const Celeb = mongoose.model("Celeb", celebSchema) //=> call mongoose object and create a new model named "Celeb" with my schema structure
 module.exports = Celeb

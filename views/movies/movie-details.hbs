@@ -1,0 +1,20 @@
+{{!-- *Iteration 8 --}}
+<a href="/">Go back</a>
+<h2>Movies' Details</h2>
+<div>
+  <h4>Title:</h4>
+  <p>{{this.oneMovie.title}}</p>
+  <h4>Genre:</h4>
+  <p>{{this.oneMovie.genre}}</p>
+  <h4>Plot: </h4>
+  <p>{{this.oneMovie.plot}} </p>
+  <h4>Cast: </h4>
+  {{#each this.oneMovie.cast}}
+  <li>{{this.name}} as an {{this.occupation}}.</li>
+    <p>Catch Phrase: {{this.catchPhrase}}</p>
+  {{/each}}
+  {{!-- *Iteration 9 --}}
+  <form action="/movies/{{this.oneMovie._id}}/delete" method="post">
+  <button>Delete</button>
+  </form>
+</div>
