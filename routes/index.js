@@ -4,6 +4,8 @@ const router = require("express").Router();
 router.get("/", (req, res, next) => {
   res.render("index");
 });
+
+//*Iteration 1
 const celebritiesRouter = require("./celebrities.routes.js")
 router.use("/celebrities", celebritiesRouter)
 
