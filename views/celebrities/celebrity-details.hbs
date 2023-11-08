@@ -1,0 +1,17 @@
+<a href="/">Go back</a>
+<h2>Celebrity Details</h2>
+<div>
+    <h4>Name:</h4>
+    <p>{{this.oneCeleb.name}}</p>
+    <h4>Occupation: </h4>
+    <p>{{this.oneCeleb.occupation}}</p>
+    <h4>Quote: </h4>
+    <p>{{this.oneCeleb.catchPhrase}}</p>
+    <form action="/celebrities/{{this.oneCeleb._id}}/delete" method="post">
+    <button>Delete</button>
+    </form>
+    <br>
+    <form action="/celebrities/{{this.oneCeleb._id}}/edit">
+   <button>Update</button>
+   </form>
+   </div>

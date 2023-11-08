@@ -42,5 +42,59 @@ router.get("/", async (req, res, next)=>{
         next(err)
     }
 })
+//BONUSES details, delete, edit
+
+//GET "celebrities/:id" => show specific celebrity
+router.get("/:id", async (req, res, next)=>{
+    try{
+        const response = await Celeb.findById(req.params.id)
+        console.log(response);
+        res.render("celebrities/celebrity-details.hbs", {
+            oneCeleb : response
+        })
+
+    } catch(err){
+        next(err)
+    }
+})
+//POST "/celebrities/:id/delete" => delete one celeb
+router.post("/:id/delete", (req, res, next)=>{
+    Celeb.findByIdAndDelete(req.params.id)
+    .then(()=>{
+        res.redirect("/celebrities")
+    })
+    .catch((err)=>{
+        next(err)
+    })
+})
+//GET "/celebrities/:id/edit" => show a form to edit a celeb
+router.get("/:id/edit", async (req, res, next)=>{
+    try{
+        const celebToEdit = await Celeb.findById(req.params.id)
+        
+        res.render("celebrities/edit-celebrity.hbs", {
+            celebToEdit            
+        })
+
+    } catch(err){
+        next(err)
+    }
+})
+//POST "/celebrities/:id/edit" => Send data from form to rout to update the specific celeb
+router.post("/:id/edit", async (req, res, next)=>{   
+    try{
+        const response = await Celeb.findByIdAndUpdate(req.params.id, {
+            name: req.body.name,
+            occupation: req.body.occupation,
+            catchPhrase: req.body.catchPhrase
+        })
+        res.redirect(`/celebrities/${req.params.id}/`)
+
+    } catch(err){
+        next(err)
+    }
+   
+})
+
 
 module.exports = router;

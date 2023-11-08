@@ -1,8 +1,23 @@
+
 body {
+  color: white;
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url("../images/background.jpg");
+  background-size: cover;
 }
+
 
 a {
   color: #00b7ff;
+  
 }
+#main-page{
+ 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ 
+}
+
+

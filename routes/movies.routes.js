@@ -79,7 +79,7 @@ router.post("/:id/delete", (req, res, next)=>{
 //GET "/movies/:id/edit" => show a form to edit a movie
 router.get("/:id/edit", async (req, res, next)=>{
     try{
-        const movieToEdit = await Movie.findById(req.params.id).populate("cast")
+        const movieToEdit = await Movie.findById(req.params.id).populate("cast") //reference a document
         const allCelebs = await Celeb.find().select({name:1})
         res.render("movies/edit-movie.hbs", {
             movieToEdit,
@@ -91,7 +91,7 @@ router.get("/:id/edit", async (req, res, next)=>{
     }
 })
 //POST "/movies/:id/edit" => Send data from form to rout to update the specific movie
-router.post("/:id", async (req, res, next)=>{   
+router.post("/:id/edit", async (req, res, next)=>{   
     try{
         const response = await Movie.findByIdAndUpdate(req.params.id, {
             title: req.body.title,
@@ -99,7 +99,7 @@ router.post("/:id", async (req, res, next)=>{
             plot: req.body.plot,
             cast: req.body.cast
         })
-        res.redirect(`/movies/${req.params.id}`)
+        res.redirect(`/movies/${req.params.id}/`)
 
     } catch(err){
         next(err)
